@@ -1,0 +1,84 @@
+{% extends 'base.html'%} {% block title %} Sign Up {% endblock %} {% block
+content %}
+<!-- Pris le template de https://www.tutorialrepublic.com/codelab.php?topic=bootstrap-3&file=sign-up-form-with-icons -->
+<div class="signup-form">
+  <form action="{{url_for("signup")}}" method="POST">
+    <h2>Sign Up</h2>
+    <p>Please fill in this form to create an account!</p>
+    <hr />
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          placeholder="Username"
+          required="required"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+        <input
+          type="text"
+          class="form-control"
+          name="password"
+          placeholder="Password"
+          required="required"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-lock"></i>
+          <i class="fa fa-check"></i>
+        </span>
+        <input
+          type="text"
+          class="form-control"
+          name="confirm_password"
+          placeholder="Confirm Password"
+          required="required"
+        />
+      </div>
+    </div>
+
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-warning active">
+        <input
+          type="radio"
+          name="options"
+          id="option1"
+          value="player"
+          autocomplete="off"
+          required
+        />
+        Player
+      </label>
+      <label class="btn btn-success">
+        <input
+          type="radio"
+          name="options"
+          id="option2"
+          value="admin"
+          autocomplete="off"
+          required
+        />
+        Admin
+      </label>
+    </div>
+
+    <div class="form-group">
+      <br />
+      <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+    </div>
+  </form>
+  <div class="text-center">
+    Already have an account? <a href="{{ url_for('login')}}">Login here</a>
+  </div>
+</div>
+
+{% endblock %}

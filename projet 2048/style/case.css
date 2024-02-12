@@ -1,0 +1,89 @@
+#jeu {
+    
+    background-color: grey;
+}
+
+.case {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background-color: gray;
+ 
+}
+
+.case-2 {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background-color: orange;
+}
+
+.case-4 {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background-color: rgb(39, 207, 207);
+}
+
+.case-8 {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background-color: pink;
+}
+
+.case-16 {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background-color: palevioletred;
+}
+
+.case-32 {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background-color: greenyellow;
+}
+
+.case-64 {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background-color: burlywood;
+}
+
+.case-128 {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background-color: goldenrod;
+}
+
+.case-256 {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background-color: rebeccapurple;
+}
+
+.case-512 {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background-color: cyan;
+}
+
+.case-1024 {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background-color: aquamarine;
+}
+
+.case-2048 {
+  padding: 10px;
+  font-size: 40px;
+  text-align: center;
+  background-color: gold;
+}

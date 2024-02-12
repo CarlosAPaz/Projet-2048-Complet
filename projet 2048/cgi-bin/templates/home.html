@@ -1,0 +1,14 @@
+{% extends 'base.html'%} {% block title %} Home {% endblock %} {% block content
+%}
+
+<div class="jumbotron">
+    <h1 class="display-4">Bienvenue!</h1>
+    <p class="lead">Veuillez svp vous connecter ou vous s'inscrire si ce n'est pas déja fait. Vous avez l'option entre un profil joueur ou admin. Le profil joueur est pour les joueurs non compétitifs qui veulent tout simplement apprécié le jeu 2048. Le profil admin est pour les joueurs plus compétitif. Ce porfil vous permettra d'accèder aux statistiques des tous les joueurs inscrits.</p>
+    <hr class="my-4">
+    <p>N.B : vous n'avez pas besoin de vous deconnecter de votre session. Le système va automatiquement vous déconnecter si fermer la fenêtre ou si vous etes rediriger a une page autre que la page joueur ou admin.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="{{ url_for('signup')}}" role="button">S'inscrire</a>
+      <a class="btn btn-primary btn-lg" href="{{ url_for('login')}}" role="button">Se connecter</a>
+    </p>
+  </div>
+{% endblock %}

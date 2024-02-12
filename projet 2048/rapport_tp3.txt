@@ -1,0 +1,25 @@
+https://www-ens.iro.umontreal.ca/~pazcarlo/cgi-bin/init.cgi
+
+
+Rapport 
+
+Schéma de ma base de donnée:
+table pazcarlo_2048 
+colonne nom -> champ accptant un string. Ce champ a été choisi comme cle primaire puisque nous avons une validation dans notre app.py pour confirmer que le username choisi est unique dans notre table.
+		mot_de_passe -> Champ acceptant un string pour le mot de passe. Bien que les champs nom, mot_de_passe et profil n'accepte pas de valeur. C'est le formulaire bootStrap avec des champs input required qui s'assure que l'utilisateur entre une donnée valide.
+		profil -> champ pour le type de profil soit player ou admin , dans notre code nous avons un bouton radio qui force le choix d'une de ces options et ce sont les seuls options possibles pour ce champ.
+		actif -> champ nous servant a identifier les joueurs qui sont logIN dans leur compte, j'ai pretablie une valeur false par défaut et changer a true quand l'utilisateur est actif. 
+		score -> le score le plus eleve pour ce joueur
+		date_inscription -> Champ gérer automatiquement par sql qui enregistre automatiquement la date et l'heure ou l'entrer a été ajouter à notre base de donnée. Le type de donnée timestamp permet une valuer par défaut CURRENT_TIMESTAMP.
+
+Schéma flask:
+
+route Home: page d'accueil qui demande a tout utilisateur de s'inscrire et explique brièvement le fonctionnement du site.
+route signup: Page acceptant les méthodes GET et POST. Affiche un formulaire bootstrap qui force l'utilisateur a remplir correctement le formulaire avant de le soumettre. Ce formulaire est soumis par POST a la route signup ou une validation des inputs se fait.
+			 On utilise l'option flash prétablie dans FLASK pour générer un message pour aviser l'utilisateur de tout échec du processu de validation.
+route login: Cette route accepte aussi les méthodes GET et POST. Cette page a le meme fonctionnement que la page signup. Si un utilisateur passe le processus de validation admin alors app.py va render_template admin et même logique pour joueur. De cette façon on s'assure que l'utilisateur doit s'enregistrer et se connecter pour accèder a ces pages. Si non l'utilisateur pourrait ajouter à la bare d'adresse /admin  ou /player pour contourner notre système.
+route admin: Cette route n'admet que la méthode POST utiliser pour afficher la table bootstrap avec les statistiques de tous les joueurs. À noter, toutes statistiques ,qu'on doit afficher en temps réel dans le module admin ou dans le module player, sont gérées par un script Jquery(qui utilise AJAX) et php apart (utiliser la même méthode que démontrer en classes). Puisque les fichiers admin.html et index.html ont plus scripts qui sont spécifique seulement à eux, j'ai pris comme décision de ne pas relier ces deux fichiers au fichier base.html dans le but de garder une certaine clarté dans ses fichiers.(plus facile d'identifier quel scritp est utiliser dans quel page)
+route player: Cette route n'admet que la méthode POST. Seulement utiliser dans admin.hmtl quand l'utilisateur decide de changer pour le module joueur pour transmettre les info a propos de l'utilisateur. Pour identifier l'utilisateur nous avons un <span id=user> dans admin.html et dans index.html et nous mettons la valeur de cette balise en utilisant l'option que flask nous offre de soumettre des variables qu'on peut ensuite utiliser dans le rendre_template. De cette façon, nous avons toujours une balise avec le nom de l'utilisateur qu'on peut récupérer lorsqu'on désire faire des opérations tel que confirmer que cette utilisateur est actif/inactif ou mettre a jour son meilleur score.
+Difficulté: Pour gerer l'événement logout, j'ai decidé d'utiliser l'event window.onbeforeunload pour lancer mon script close.pho qui s'occupe de déconnecter notre utilisateur lorsque celui navigue a une page autre que admin ou player ou si celui-ci decide de fermer la page. Cependant, cette event ne semble pas fonctionner a tout les coups selon mes tests. Sur chrome, mon script close.js semble bien fonctionner lorsque l'utilisateur navigue à une page autre admin ou player mais fonctionne de manière non constante si l'utilisateur choisi de fermer la fenêtre. Alors que dans firefox, le script semble fonctionner de manière non constante dans ces deux cas. (le fait d'avoir le débogueur actif semble avoir un impact pas sur). Je n'ai pas eu le temps de solutionner ce problème.
+  			 
+Pour la remise: Tel que vous avez pu constater je n'ai pu respecter le path indiquer dans la section remise de l'énoncer du tp3. Cependant, pour faciliter la correction, j'ai nettoyer mon fichier public_html pour tous les fichiers qui s'y retrouve en ce moment ont tous lien avec le tp3.
